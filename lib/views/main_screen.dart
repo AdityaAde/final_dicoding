@@ -1,5 +1,5 @@
+import 'package:app_covid/views/statisctics.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MainScreen extends StatelessWidget {
   final String nama;
@@ -79,7 +79,7 @@ class MainScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 20, right: 20),
+                      padding: EdgeInsets.only(left: 20, right: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -91,27 +91,35 @@ class MainScreen extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-                          Card(
-                            color: Colors.black,
-                            shadowColor: Colors.black,
-                            elevation: 30,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Container(
-                              height: 50,
-                              width: 100,
-                              child: Center(
-                                child: Text(
-                                  "PANGGIL!",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                          InkWell(
+                            child: Card(
+                              color: Colors.black,
+                              shadowColor: Colors.black,
+                              elevation: 30,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Container(
+                                height: 50,
+                                width: 150,
+                                child: Center(
+                                  child: Text(
+                                    "Cek data Covid",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.red),
                               ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.blue),
                             ),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return DataCovid();
+                              }));
+                            },
                           )
                         ],
                       ),
@@ -135,54 +143,14 @@ class MainScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 5,
             ),
             Container(
               width: double.infinity,
-              height: size.height * 0.3,
+              height: size.height * 0.4,
               child: Image.asset('images/prevention1.jpg'),
             )
           ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 20,
-              color: Colors.black.withOpacity(.1),
-            )
-          ],
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 12,
-            ),
-            child: GNav(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              rippleColor: Colors.blue[300],
-              hoverColor: Colors.blue[100],
-              gap: 8,
-              activeColor: Colors.blue,
-              iconSize: 24,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              duration: Duration(milliseconds: 400),
-              tabBackgroundColor: Colors.blue[100],
-              tabs: [
-                GButton(
-                  icon: Icons.home,
-                  text: 'Home',
-                ),
-                GButton(
-                  icon: Icons.graphic_eq,
-                  text: 'Statistics',
-                ),
-              ],
-            ),
-          ),
         ),
       ),
     );
